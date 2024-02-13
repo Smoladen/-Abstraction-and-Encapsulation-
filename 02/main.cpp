@@ -16,26 +16,23 @@ public:
     std::string getAdress(){
         return city + ", " + street + ", " + std::to_string(house) + ", " + std::to_string(apartment);
     }
-
+    std::string getCity() const{
+        return city;
+    }
 };
 
-void sort(Address* arr, int size){
-    int k = 0;
-    for(int i = 0; i < size - 1 ; i++){
-        for (int j = i + 1; j < size; j++){
-            k = 0;
-            if (arr[i].getAdress() != arr[j].getAdress()){
-                while (arr[i].getAdress()[k] == arr[j].getAdress()[k])
-                    k++;
-                if (arr[i].getAdress()[k] < arr[j].getAdress()[k]) {
-                    Address temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
+void sort(Address* arr, int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (arr[i].getCity() < arr[j].getCity()) {
+                Address temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
         }
     }
 }
+
 
 int main() {
     int numOfAdresses;
